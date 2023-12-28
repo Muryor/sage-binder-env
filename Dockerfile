@@ -21,7 +21,7 @@ RUN chown -R ${NB_USER}:${NB_USER} ${HOME}
 USER ${NB_USER}
 
 RUN apt-get -qq update \
-    && sudo apt-get -qq install -y  macaulay2
+    &&  apt-get -qq install -y  macaulay2
 
 # Install Sage kernel to Jupyter
 RUN mkdir -p $(jupyter --data-dir)/kernels
