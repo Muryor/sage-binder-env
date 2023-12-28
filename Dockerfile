@@ -5,8 +5,8 @@ FROM ghcr.io/sagemath/sage/sage-ubuntu-focal-standard-with-targets:10.2
 
 USER root
 
-RUN  apt-get -qq update \
-    &&  apt-get -qq install -y  macaulay2
+RUN   add-apt-repository ppa:macaulay2/macaulay2 \
+    &&  apt  install -y  macaulay2
 
 # Create user alice with uid 1000
 ARG NB_USER=alice
