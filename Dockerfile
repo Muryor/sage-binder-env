@@ -11,6 +11,8 @@ ARG NB_UID=1000
 ENV NB_USER alice
 ENV NB_UID 1000
 ENV HOME /home/${NB_USER}
+RUN sudo apt-get -qq update \
+    &&  sudo apt-get -qq install -y  macaulay2
 RUN adduser --disabled-password --gecos "Default user" --uid ${NB_UID} ${NB_USER}
 
 # Make sure the contents of the notebooks directory are in ${HOME}
@@ -19,9 +21,6 @@ RUN chown -R ${NB_USER}:${NB_USER} ${HOME}
 
 # Switch to the user
 USER ${NB_USER}
-
-RUN sudo apt-get -qq update \
-    &&  sudo apt-get -qq install -y  macaulay2
 
 # Install Sage kernel to Jupyter
 RUN mkdir -p $(jupyter --data-dir)/kernels
