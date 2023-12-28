@@ -5,14 +5,15 @@ FROM ghcr.io/sagemath/sage/sage-ubuntu-focal-standard-with-targets:10.2
 
 USER root
 
+RUN  apt-get -qq update \
+    &&  apt-get -qq install -y  macaulay2
+
 # Create user alice with uid 1000
 ARG NB_USER=alice
 ARG NB_UID=1000
 ENV NB_USER alice
 ENV NB_UID 1000
 ENV HOME /home/${NB_USER}
-RUN sudo apt-get -qq update \
-    &&  sudo apt-get -qq install -y  macaulay2
 RUN adduser --disabled-password --gecos "Default user" --uid ${NB_UID} ${NB_USER}
 
 # Make sure the contents of the notebooks directory are in ${HOME}
