@@ -20,7 +20,7 @@ RUN chown -R ${NB_USER}:${NB_USER} ${HOME}
 # Switch to the user
 USER ${NB_USER}
 
-RUN sudo apt-get -qq update \
+RUN apt-get -qq update \
     && sudo apt-get -qq install -y  macaulay2
 
 # Install Sage kernel to Jupyter
