@@ -6,7 +6,7 @@ FROM ghcr.io/sagemath/sage-binder-env:10.2
 USER root
 
 RUN   add-apt-repository ppa:macaulay2/macaulay2 \
-    &&  apt  install -y  macaulay2 maxima gap octave
+    &&  apt  install -y  macaulay2 maxima gap singular scilab
 
 # Create user alice with uid 1000
 ARG NB_USER=alice
